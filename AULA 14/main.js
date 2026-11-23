@@ -1,22 +1,19 @@
-// SCRIPT PARA ESTUDAR O FETCH COM JSON
-
-const divResposta = document.querySelector('#resposta');
-const imgResposta = document.querySelector('#imagem');
+const divResposta = document.querySelector("#resposta");
+const imgResposta = document.querySelector("#imagem");
 
 const responder = async() => {
-    divResposta.textContent = 'Carregando...';
-    imgResposta.src = ''; // limpa a imagem antes de buscar a nova
+    divResposta.textContent = "Carregando...";
+    imgResposta.src = "";
     const response = await fetch('https://yesno.wtf/api');
-    const data = await response.json(); // converte readable stream em json
+    const data = await response.json();
     divResposta.textContent = data.answer.replace('yes', 'sim').replace('no', 'não');
     imgResposta.src = data.image;
-    imgResposta.style.display = 'block'; // exibe a imagem
+    imgResposta.style.display = "block";
     zerar();
 }
-
 const zerar = () => {
-    setTimeout( () => {
-        imgResposta.style.display = 'none'; // esconde a imagem
-        divResposta.textContent = ''; // limpa a resposta
+    setTimeout(() => {
+        imgResposta.style.display = 'none';
+        divResposta.textContent = '';
     }, 10000);
 }
